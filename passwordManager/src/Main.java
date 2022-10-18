@@ -26,7 +26,7 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);
 
-    //public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
+    public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
         /*
         Написать функцию, которая:
         1) Принимает массив
@@ -37,10 +37,10 @@ public class Main {
         Сложность функции 2 из 5
          */
     String[][] newArray;
-    //return newArray;
-    //}
+    return newArray;
+    }
 
-    //public static String[][] deleteElement(String[][] array, int index) {
+    public static String[][] deleteElement(String[][] array, int index) {
         /*
         Написать функцию, которая принимает массив и индекс удаляемого элемента:
         1) Создает новый массив длинной на 1 меньше принимаего
@@ -50,7 +50,9 @@ public class Main {
 
         Сложность 3 из 5
          */
-    //}
+        String newArray;
+        return newArray;
+    }
 
     public static void adminLookUserPassword() {
         /*
