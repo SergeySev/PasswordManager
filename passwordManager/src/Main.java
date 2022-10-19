@@ -26,7 +26,7 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);
 
-    public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
+//    public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
         /*
         Написать функцию, которая:
         1) Принимает массив
@@ -36,11 +36,11 @@ public class Main {
 
         Сложность функции 2 из 5
          */
-    String[][] newArray;
-    return newArray;
-    }
+//    String[][] newArray;
+//    return newArray;
+//    }
 
-    public static String[][] deleteElement(String[][] array, int index) {
+//    public static String[][] deleteElementByIndex(String[][] array, int index) {
         /*
         Написать функцию, которая принимает массив и индекс удаляемого элемента:
         1) Создает новый массив длинной на 1 меньше принимаего
@@ -48,11 +48,25 @@ public class Main {
         3) Если индекс в цикле for совпадает с удаляемым индексом - пропускаем это значение.
         4) Возвращаем новый список
 
+        Тесты:
+        deleteElementByIndex({1, 2 , 3}, 0) -> {2, 3}
+
+        deleteElementByIndex({1, 2, 3}, 2) -> {1, 2}
+
+        deleteElementByIndex({1, 2, 3, 4}, 2) -> {1, 2, 4}
+
+        deleteElementByIndex({1, 2, 3}, 3) -> {1, 2, 3}
+
+        deleteElementByIndex({1}, 0) -> {}
+
+        deleteElementByIndex({}, 1) -> {}
+
+
         Сложность 3 из 5
          */
-        String newArray;
-        return newArray;
-    }
+//        String newArray = null;
+//        return newArray;
+//    }
 
     public static void adminLookUserPassword() {
         /*
