@@ -28,6 +28,9 @@ public class Main {
 
 //    public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
         /*
+
+        Взяли РОБЕРТ и АЛЕКС_________
+
         Написать функцию, которая:
         1) Принимает массив
         2) Создает Новый массив с длинной на 1 больше, чем oldArray переданный в аргументах
