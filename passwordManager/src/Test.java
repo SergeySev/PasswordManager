@@ -1,62 +1,112 @@
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
+import java.util.Random;
+
 
 public class Test {
+    static Random random = new Random();
 
-    static int indexEl(int[] numbers, int findNum)
-    {
-        /*
-        Написать функцию, которая ищет индекс элемента в массиве чисел:
-        1) Принимает массив чисел и число, индекс которого надо узнать
-        2) Возвращает числовое значение индекса искомого числа.
-
-        Тесты:
-
-        indexEl({1, 2, 3}, 1) -> 0
-
-        indexEl({3, 1, 4}, 4) -> 2
-
-        indexEl({1 ,2, 3}, 0) -> -1
-
-        indexEl({2, 3, 3}, 3) -> 1
-
-        indexEl({1}, 1) -> 0
-
-        indexEl({1}, 0) -> -1
-
-        indexEl({}, 3) -> -1
-
-         */
-
-        boolean findIndex = false;
+    // первый заполнили - второй пропустили -
+    // вторые два заполнили - вторые два пропустили -
+    // следующие ТРИ заполнили - ТРИ пропустили
+    // ИТД
+    static int[] fillMassive(int[] array) {
         int index = 0;
-        while (index < numbers.length)
-        {
-            if (numbers[index] == findNum)
-            {
-                findIndex = true;
-                return index;
+        int quantityFill = 1;
+        for (index = 0; index < array.length; index+= quantityFill - 1) {
+            for (int i = quantityFill; i != 0 && index < array.length; i--) {
+                array[index] = random.nextInt(1, 2);
+                ++index;
             }
-            index++;
+//            index += quantityFill;
+            ++quantityFill;  // итерация - на первой - заполяем один, на второй заполняем два
         }
-
-        if (findIndex == false) {
-            index = -1;  // Возвращает -1, потому что такого индекса быть не может. Следовательно - числа нет в массиве
+//        }
+//        while (index < array.length) {
+//            for (int i = quantityFill; i != 0 && index < array.length; i--) {
+//                array[index] = random.nextInt(1, 2);
+//                ++index;
+//            }
+//            index += quantityFill;
+//            ++quantityFill;  // итерация - на первой - заполяем один, на второй заполняем два
+//        }
+        return array;
+    }
+    
+    static int[] fillArray(int[] array) {
+        Random random = new Random();
+        int[] array1 = new int[array.length];
+        int count = 1;
+        int startPos = 0;
+        int lastPos = 1;
+        while (startPos < array1.length) {
+            for (int i = startPos; i < lastPos; i++) {
+                array1[i] = random.nextInt(1,2);
+            }
+            startPos = lastPos + count;
+            count++;
+            lastPos = startPos + count;
+            if (lastPos >= array1.length) {
+                lastPos = array1.length;
+            }
         }
-
-        return index;
-    }
-    public static String perezagruzka() {
-        return "Перезапустились";
+        return array1;
     }
 
-//   false == false : true
-    // true == true : true
+    static void test(long[] Sergey, long[] Elena) {
+        System.out.println("Result Sergey = " + Arrays.toString(Sergey));
+        System.out.println("Result Elena  = " + Arrays.toString(Elena));
+
+        int fast = 0;
+        int slow = 0;
+        int equals = 0;
+        for (int i = 0; i < Sergey.length; i++) {
+            if (Sergey[i] < Elena[i]) {
+                ++fast;
+            } else if (Sergey[i] > Elena[i]) {
+                ++slow;
+            }
+            else ++equals;
+        }
+        System.out.println("Fast = " + fast);
+        System.out.println("Slow = " +slow);
+        System.out.println("Equal = " + equals);
+    }
+
+    static long[] runElena(int timeCycle, int functionCycle) {
+        long[] result = new long[timeCycle];
+        Instant start = Instant.now();
+        for (int j = 0; j < timeCycle; j++) {
+            for (int i = 0; i < functionCycle; i++) {
+                int[] testArray = new int[i];
+                System.out.println(Arrays.toString(fillArray(testArray)));
+            }
+            Instant finish = Instant.now();
+            long elapsed = Duration.between(start, finish).toMillis();
+            result[j] = elapsed;
+        }
+        return result;
+    }
+    static long[] runSergey(int timeCycle, int functionCycle) {
+        long[] result = new long[timeCycle];
+        Instant start = Instant.now();
+        for (int j = 0; j < timeCycle; j++) {
+            for (int i = 0; i < functionCycle; i++) {
+                int[] testArray = new int[i];
+                System.out.println(Arrays.toString(fillMassive(testArray)));
+            }
+            Instant finish = Instant.now();
+            long elapsed = Duration.between(start, finish).toMillis();
+            result[j] = elapsed;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        int[] numbers = {1, 2, 3};
-        //   deleteElement
-
-
+        System.out.println("Sergey - Elena");
+        test(runSergey(20, 1000), runElena(20, 1000));
+//        runSergey(20, 40);
 
     }
-
 }
