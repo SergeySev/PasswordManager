@@ -11,18 +11,20 @@ public class Test {
     // вторые два заполнили - вторые два пропустили -
     // следующие ТРИ заполнили - ТРИ пропустили
     // ИТД
+
+    // Функция Сергея
     static int[] fillMassive(int[] array) {
         int index = 0;
         int quantityFill = 1;
+        // Первый вариант
         for (index = 0; index < array.length; index+= quantityFill - 1) {
             for (int i = quantityFill; i != 0 && index < array.length; i--) {
                 array[index] = random.nextInt(1, 2);
                 ++index;
             }
-//            index += quantityFill;
             ++quantityFill;  // итерация - на первой - заполяем один, на второй заполняем два
         }
-//        }
+//        Второй вариант
 //        while (index < array.length) {
 //            for (int i = quantityFill; i != 0 && index < array.length; i--) {
 //                array[index] = random.nextInt(1, 2);
@@ -33,7 +35,7 @@ public class Test {
 //        }
         return array;
     }
-    
+    // Функция Елены
     static int[] fillArray(int[] array) {
         Random random = new Random();
         int[] array1 = new int[array.length];
@@ -80,7 +82,7 @@ public class Test {
         for (int j = 0; j < timeCycle; j++) {
             for (int i = 0; i < functionCycle; i++) {
                 int[] testArray = new int[i];
-                System.out.println(Arrays.toString(fillArray(testArray)));
+                fillArray(testArray);
             }
             Instant finish = Instant.now();
             long elapsed = Duration.between(start, finish).toMillis();
@@ -94,7 +96,7 @@ public class Test {
         for (int j = 0; j < timeCycle; j++) {
             for (int i = 0; i < functionCycle; i++) {
                 int[] testArray = new int[i];
-                System.out.println(Arrays.toString(fillMassive(testArray)));
+                fillMassive(testArray);
             }
             Instant finish = Instant.now();
             long elapsed = Duration.between(start, finish).toMillis();
@@ -105,8 +107,7 @@ public class Test {
 
     public static void main(String[] args) {
         System.out.println("Sergey - Elena");
-        test(runSergey(20, 1000), runElena(20, 1000));
+        test(runSergey(20, 10000), runElena(20, 10000));
 //        runSergey(20, 40);
-
     }
 }
