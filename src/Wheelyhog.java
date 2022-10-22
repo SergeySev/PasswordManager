@@ -7,7 +7,7 @@ public class Wheelyhog {
             newArray[i] = oldArray[i];
         }
         newArray[newArray.length - 1] = subArray;
-        Arrays.stream(newArray).map(Arrays::toString).forEach(System.out::println);
+        System.out.println(Arrays.deepToString(newArray));
         return newArray;
     }
 
@@ -28,7 +28,7 @@ public class Wheelyhog {
         System.out.println("**************");
         addNewMassiv(oldArray, subArray2);
 
-        String[][] oldArray1 = {};
+        String[][] oldArray1 = {{}};
         String [] subArray3 = {};
         System.out.println("**************");
         addNewMassiv(oldArray1, subArray3);
