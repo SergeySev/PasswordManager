@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Wheelyhog {
     public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
         String[][] newArray = new String[oldArray.length + 1][];
-        for (int i = 0; i < newArray.length - 1; i++) {
+        for (int i = 0; i < oldArray.length; i++) {
             newArray[i] = oldArray[i];
         }
         newArray[newArray.length - 1] = subArray;
