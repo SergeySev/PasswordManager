@@ -7,8 +7,7 @@ public class Wheelyhog {
             newArray[i] = oldArray[i];
         }
         newArray[newArray.length - 1] = subArray;
-        System.out.println((Arrays.toString(newArray)));
-
+        Arrays.stream(newArray).map(Arrays::toString).forEach(System.out::println);
         return newArray;
     }
 
