@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +25,7 @@ public class Main {
             {"Google", "test123@gmail.com", "123asd23"}
     };
 
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static String[][] addNewMassiv(String[][] oldArray, String[] subArray) {
         String[][] newArray = new String[oldArray.length + 1][];
@@ -104,7 +105,7 @@ public class Main {
          */
     }
 
-    public static void registration() {
+    public static String registration() {
         static String str;
         static String email;
         static String pswd;
@@ -184,22 +185,28 @@ public class Main {
          */
     }
 
-    public static void logIn() {
-        /*
-        ____
-        Сергей взял
-        ____
-        Написать функцию, которая:
-        1) Предлагает ввести Email
-        2) Предлагает ввести пароль
-        3) Если Email есть в базе данных - И введенный пароль совпадает с паролем ОТ этого Email:
-        Lig in success
-        Если Email не существует в базе Или пароль не совпадает с найденным Email:
-        Вы ввели не верный email или пароль, пожалуйста, введите верный email и пароль и повторять, пока
-        не введет совпадающий Email и пароль
+    public static void getLogin(String[][] usersData) {
 
-        Сложность функции 5 из 5.
-         */
+        Scanner scanner = new Scanner(System.in);
+        boolean flag = false;
+        String[] account = new String[2];
+
+        System.out.println("Please, enter Email:");
+        account[0] = getString();
+        account[1] = getPassword();
+        System.out.println(Arrays.toString(account));
+        while (!flag) {
+            for (int i = 1; i < usersData.length; i++) {
+                if (usersData[i][0].equals(account[0]) && usersData[i][1].equals(account[1])) {
+                    System.out.println("Login Success!!!");
+                    flag = true;
+                    break;
+                }
+            } if (!flag){
+                System.out.println("You enter wrong data! Please, try again...");
+                getLogin(usersData);
+            } else break;
+        }
     }
 
     public static void lookPassword() {
