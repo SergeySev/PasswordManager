@@ -16,20 +16,19 @@ public class Login extends Wheelyhog {
         account[0] = getString();
         account[1] = getPassword();
         System.out.println(Arrays.toString(account));
-
-        for (int i = 1; i < usersData.length; i++) {
-            if (usersData[i][0].equals(account[0]) && usersData[i][1].equals(account[1])) {
-                System.out.println("Login Success!!!");
-                flag = true;
-                break;
-            }
-            if (flag == false) {
+        while (!flag) {
+            for (int i = 1; i < usersData.length; i++) {
+                if (usersData[i][0].equals(account[0]) && usersData[i][1].equals(account[1])) {
+                    System.out.println("Login Success!!!");
+                    flag = true;
+                    break;
+                }
+            } if (!flag){
                 System.out.println("You enter wrong data! Please, try again...");
                 getLogin(usersData);
-            }
+            } else break;
         }
     }
-
 
     public static void main(String[] args) {
         getLogin(usersData);
